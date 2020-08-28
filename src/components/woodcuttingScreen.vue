@@ -41,42 +41,43 @@
   </v-container>
 </template>
 
+<style scoped>
+.v-progress-linear {
+   transition: all 0.05s ease;
+}
+::-moz-selection {
+  background: red;
+}
+</style>
+
 <script>
 export default {
   name: "woodcuttingScreen",
 
   data: () => ({
-    currentProgress: 0,
-    currentAction: null, //pass this into onclick so you dont have to use this
     actions: [
-      { name: "oak", mastery: 1, interval: 100, xp: 0, toNextLevel: 100, produces: "logs" },
-      { name: "maple", mastery: 1, interval: 200, xp: 25, toNextLevel: 100, produces: "logs" },
-      { name: "willow", mastery: 1, interval: 500, xp: 50, toNextLevel: 100, produces: "logs" },
-      { name: "yew", mastery: 1, interval: 2000, xp: 75, toNextLevel: 100, produces: "logs" },
+      { name: "oak", mastery: 1, interval: 10, xp: 0, toNextLevel: 10, produces: "logs" },
+      { name: "maple", mastery: 1, interval: 20, xp: 0, toNextLevel: 10, produces: "logs" },
+      { name: "willow", mastery: 1, interval: 50, xp: 0, toNextLevel: 10, produces: "logs" },
+      { name: "yew", mastery: 1, interval: 75, xp: 0, toNextLevel: 10, produces: "logs" },
     ],
   }),
+
+  computed: {
+    // currentProgress()  {
+    //   return this.$store.state.currentProgress
+    // },
+  },
+
   methods: {
     getPercentageComplete: function(action) {
-      return this.currentProgress / action.interval * 100
+      if (action == this.$store.state.currentAction) {
+        return this.$store.state.currentProgress / action.interval * 100}
+      return 0
     },
 
     clickAction: function(action) {
-      this.currentAction = action
-      setInterval(function() {
-        if (this.currentProgress < action.interval) {
-          console.log(this.currentProgress)
-          this.currentProgress++
-        }
-        else if (this.currentProgress >= action.interval) {
-          this.currentProgress = 0
-          action.xp++
-        }
-        if (action.xp >= action.toNextLevel) {
-          action.xp = action.xp - action.toNextLevel
-          action.toNextLevel *= 2
-          action.mastery++
-        }
-      }, action.interval)
+      this.$store.commit('clickAction', action)
     }
   }
 };
