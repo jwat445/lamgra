@@ -56,8 +56,10 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-
-// progressbar movement could look better
+// bulma, node sass, sass loader
+// main.scss that imnports bulma
+// require bulma in main.js
+// overrides go in main.scss and tyou got to import the file you override after
 // bar should keep going even when on different screen (store all action and skill data in vuex store)
 // remove grey selection on cards with css
 // look at python version
