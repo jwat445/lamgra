@@ -2,12 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import Vuex from 'vuex'
+import './main.scss'
+// import "bulma/css/bulma.css";
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
+    navBarOpen: false,
     interval: null,
     currentAction: null,
     currentProgress: 0,
@@ -56,10 +59,9 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-// bulma, node sass, sass loader
-// main.scss that imnports bulma
-// require bulma in main.js
-// overrides go in main.scss and tyou got to import the file you override after
+// nav bar with hamburger button and app name
+// sidebar that toggles with that hamburger menu
+// colums of cards of some sort that contain action info
 // bar should keep going even when on different screen (store all action and skill data in vuex store)
 // remove grey selection on cards with css
 // look at python version
