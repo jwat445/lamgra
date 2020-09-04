@@ -1,88 +1,22 @@
 <template>
-<div>
-      <v-row>
-      <v-col
-        v-for="action in actions"
-        :key="action.name"
-        class="d-flex child-flex"
-      >
-        <div class="columns">
-          <div class="column" v-on:click="clickAction(action)">
-            <div class="headline mb-6">{{ action.name }}</div>
-                <div class="overline">Mastery: {{ action.mastery }}</div>
-                <div class="overline">
-                  xp: {{ action.xp }}/{{ action.toNextLevel }}
-                </div>
-                <div>
-                  <progress class="progress is-small has-background-dark" :value="getPercentageComplete(action)" max="1000"></progress>
-                </div>
-          </div>
+<div class="columns" >
+  <div class="column card" v-for="action in actions"
+  :key="action.name" v-on:click="clickAction(action)">
+    <div class="card-header">
+      <p class="card-header-title">
+        {{ action.name }}
+      </p>
+    </div>
+    
+        <div class="overline">Mastery: {{ action.mastery }}</div>
+        <div class="overline">
+          xp: {{ action.xp }}/{{ action.toNextLevel }}
         </div>
-        <!-- <v-hover v-slot:default="{ hover }">
-          <v-card
-            class="max-auto"
-            outlined
-            v-on:click="clickAction(action)"
-            max-height="300"
-            max-width="350"
-            height="300"
-            width="350"
-            v-ripple="false"
-            :elevation="hover ? 5 : 2"
-          >
-            <v-list-item>
-              <v-list-item-content>
-                <div class="headline mb-6">{{ action.name }}</div>
-                <div class="overline">Mastery: {{ action.mastery }}</div>
-                <div class="overline">
-                  xp: {{ action.xp }}/{{ action.toNextLevel }}
-                </div>
-                <div>
-                  <progress class="progress is-small has-background-dark" :value="getPercentageComplete(action)" max="1000"></progress>
-                </div>
-              </v-list-item-content>
-            </v-list-item>
-          </v-card>
-        </v-hover> -->
-      </v-col>
-    </v-row>
+        <div>
+          <progress class="progress is-small has-background-dark" :value="getPercentageComplete(action)" max="1000"></progress>
+        </div>
 </div>
-  <!-- <v-container grid-list-md>
-    <v-row>
-      <v-col
-        v-for="action in actions"
-        :key="action.name"
-        class="d-flex child-flex"
-      >
-        <v-hover v-slot:default="{ hover }">
-          <v-card
-            class="max-auto"
-            outlined
-            v-on:click="clickAction(action)"
-            max-height="300"
-            max-width="350"
-            height="300"
-            width="350"
-            v-ripple="false"
-            :elevation="hover ? 5 : 2"
-          >
-            <v-list-item>
-              <v-list-item-content>
-                <div class="headline mb-6">{{ action.name }}</div>
-                <div class="overline">Mastery: {{ action.mastery }}</div>
-                <div class="overline">
-                  xp: {{ action.xp }}/{{ action.toNextLevel }}
-                </div>
-                <div>
-                  <progress class="progress is-small has-background-dark" :value="getPercentageComplete(action)" max="1000"></progress>
-                </div>
-              </v-list-item-content>
-            </v-list-item>
-          </v-card>
-        </v-hover>
-      </v-col>
-    </v-row>
-  </v-container> -->
+</div>
 </template>
 
 <style scoped>
@@ -90,9 +24,6 @@
   border-radius: 0%;
   transition: all 0.05s ease;
 
-}
-.v-progress-linear {
-   transition: all 0.05s ease;
 }
 </style>
 

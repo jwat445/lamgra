@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify';
 import Vuex from 'vuex'
 import './main.scss'
 // import "bulma/css/bulma.css";
@@ -54,15 +53,11 @@ export const store = new Vuex.Store({
 })
 
 new Vue({
-  vuetify,
   store: store,
   render: h => h(App)
 }).$mount('#app')
 
-// nav bar with hamburger button and app name
-// sidebar that toggles with that hamburger menu
-// colums of cards of some sort that contain action info
-// bar should keep going even when on different screen (store all action and skill data in vuex store)
+// progress bar should keep going even when on different screen (store all action and skill data in vuex store)
 // remove grey selection on cards with css
 // look at python version
 // add another screen with actions
