@@ -11,10 +11,9 @@
       </header>
     </nav>
 
-    <section class="main-content is-fullheight">
-      <transition name="slide">
-        <aside v-show="drawer" class="is-fullheight menu">
-          <p class="menu-label ">Skills</p>
+    <transition name="slide">
+        <aside v-show="drawer" class="menu sidebar">
+          <p class="menu-label">Skills</p>
           <ul class="menu-list">
             <li>
               <a @click="visibleSkill = 'woodcuttingScreen'" class="" >
@@ -30,18 +29,32 @@
         </aside>
       </transition>
 
-
+    <section class="main">
+      <!-- <transition name="slide"> -->
         <component v-bind:is="visibleSkill"></component>
+      <!-- </transition> -->
     </section>
   </div>
 </template>
 
 <style scoped>
   .slide-enter-active, .slide-leave-active {
-    transition: margin-left 5s;
+    transition: margin-left .5s;
   }
   .slide-enter, .slide-leave-to {
-    margin-left: -400px;
+    margin-left: -15%; 
+  }
+  .sidebar {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+  .main { /*apply same transition here as sidebar so they both slide?*/
+  margin-left: 15%; /* Same as the width of the sidenav */
+  padding: 0px 10px;
   }
 </style>
 
